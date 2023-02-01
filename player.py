@@ -1,6 +1,9 @@
 import random
 import sqlite3 as sql
 
+DATABASE_DIR = "database/db/"
+SELECTION_STR = "SELECT * FROM "
+
 #TODO consider making an armor class to better distinguish between pure random and organized random
 class Player:
     #starting_class, build_type, armor, ash_of_war, shield, spells
@@ -16,10 +19,10 @@ class Player:
         self.spells = ""
 
     def choose_class(self):
-        conn = sql.connect("database/db/classes.db")
+        conn = sql.connect(DATABASE_DIR+"classes.db")
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM classes")
+        cursor.execute(SELECTION_STR+"classes")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
@@ -27,31 +30,65 @@ class Player:
         conn.close()
 
     def choose_armor(self):
-        #TODO database parameter?
-        conn = sql.connect("database/db/armors.db")
+        conn = sql.connect(DATABASE_DIR+"armors.db")
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM armors WHERE category='Helmet'")
+        cursor.execute(SELECTION_STR+"armors WHERE category='Helm'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
         self.helmet=random_row[0]
 
-        cursor.execute("SELECT * FROM armors WHERE category='Chest Armor'")
+        cursor.execute(SELECTION_STR+"armors WHERE category='Chest Armor'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
         self.chest_armor=random_row[0]
 
-        cursor.execute("SELECT * FROM armors WHERE category='Gauntlets'")
+        cursor.execute(SELECTION_STR+"armors WHERE category='Gauntlets'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
         self.gauntlets=random_row[0]
 
-        cursor.execute("SELECT * FROM armors WHERE category='Leg Armor'")
+        cursor.execute(SELECTION_STR+"armors WHERE category='Leg Armor'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
         self.leg_armor=random_row[0]
         conn.close()
+
+    def choose_ash_of_war(self):
+        conn = sql.connect(DATABASE_DIR+"ashes.db")
+        cursor = conn.cursor()
+
+        cursor.execute(SELECTION_STR+"ashes")
+        rows = cursor.fetchall()
+
+        random_row = random.choice(rows)
+        self.ash_of_war=random_row[0]
+        conn.close()
+
+    def choose_shield(self):
+        conn = sql.connect(DATABASE_DIR+"shields.db")
+        cursor = conn.cursor()
+
+        cursor.execute(SELECTION_STR+"shields")
+        rows = cursor.fetchall()
+
+        random_row = random.choice(rows)
+        self.shield=random_row[0]
+        conn.close()
+
+    def choose_spells(self):
+        if(self.build_type == "S"):
+            conn = sql.connect(DATABASE_DIR+"shields.db")
+            cursor = conn.cursor()
+
+            cursor.execute(SELECTION_STR+"shields")
+            rows = cursor.fetchall()
+
+            random_row = random.choice(rows)
+            self.spells=random_row[0]
+            conn.close()
+        
