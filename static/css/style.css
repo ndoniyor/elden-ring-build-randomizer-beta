@@ -1,0 +1,11 @@
+table.build{
+    border: 1px solid black;
+}
+
+table.build td{
+    border-right: 1px solid black;
+}
+
+table.build td:last-child{
+    border-right: none;
+}
