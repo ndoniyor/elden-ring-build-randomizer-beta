@@ -9,3 +9,7 @@ table.build td{
 table.build td:last-child{
     border-right: none;
 }
+
+.btn{
+    margin-bottom: 10px;
+}
