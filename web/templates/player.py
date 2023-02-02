@@ -17,6 +17,7 @@ class Player:
         self.ash_of_war = ""
         self.shield = ""
         self.spells = ""
+        self.weapons = ""
 
     def choose_class(self):
         conn = sql.connect(DATABASE_DIR+"classes.db")
@@ -92,3 +93,17 @@ class Player:
             self.spells=random_row[0]
             conn.close()
         
+    def choose_weapons(self):
+        conn = sql.connect(DATABASE_DIR+"weapons.db")
+        cursor = conn.cursor()
+
+        cursor.execute(SELECTION_STR+"weapons")
+        rows = cursor.fetchall()
+
+        random_row = random.choice(rows)
+        self.weapons=random_row[0]
+        conn.close()
+
+    def choose_all(self):
+        self.choose_armor()
+        self.choose_weapons()

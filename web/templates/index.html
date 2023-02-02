@@ -10,15 +10,18 @@
 <body>
     <h1>Elden Ring Build Randomizer</h1>
     <div class="btn">
-        <form method="GET">
-            <input type="button" value = Randomize> 
+        <form method="POST", action="\randomize">
+            <input type="submit" value="Randomize">
         </form>
     </div>
     <table class="build">
         <tr>
-            <td>Class: {{}}</td>
-            <td>Armor</td>
-            <td>Weapon</td>
+            <td>Class: {{ starting_class }}</td>
+            <td>Helmet: {{ helm }}</td>
+            <td>Chest: {{ chest }}</td>
+            <td>Gauntlets: {{ gauntlets }}</td>
+            <td>Leg Armor: {[ legs }}</td>
+            <td>Weapon: {{ weapon }}</td>
             <td>Ash of War</td>
             <td>Shield</td>
             <td>Spells</td>
