@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-
+from randomize import Button
 def create_app(test_config=None):
     app = Flask(__name__,instance_relative_config=True)
     app.config.from_mapping(
@@ -18,5 +18,6 @@ def create_app(test_config=None):
     
     @app.route('/')
     def home_page():
-        return render_template('index.html')
+        button = Button()
+        return render_template('index.html', button=button)
     return app

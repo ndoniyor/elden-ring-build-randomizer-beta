@@ -130,3 +130,6 @@ dmypy.json
 
 #csvs
 database_setup/csv
+
+#vscode
+.vscode/
