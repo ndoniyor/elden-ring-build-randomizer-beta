@@ -1,7 +1,7 @@
 import random
 import sqlite3 as sql
 
-DATABASE_DIR = "database/db/"
+DATABASE_DIR = "database/db/items.db"
 SELECTION_STR = "SELECT * FROM "
 
 #TODO consider making an armor class to better distinguish between pure random and organized random
@@ -20,7 +20,7 @@ class Player:
         self.weapons = ""
 
     def choose_class(self):
-        conn = sql.connect(DATABASE_DIR+"classes.db")
+        conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
         cursor.execute(SELECTION_STR+"classes")
@@ -31,7 +31,7 @@ class Player:
         conn.close()
 
     def choose_armor(self):
-        conn = sql.connect(DATABASE_DIR+"armors.db")
+        conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
         cursor.execute(SELECTION_STR+"armors WHERE category='Helm'")
@@ -60,7 +60,7 @@ class Player:
         conn.close()
 
     def choose_ash_of_war(self):
-        conn = sql.connect(DATABASE_DIR+"ashes.db")
+        conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
         cursor.execute(SELECTION_STR+"ashes")
@@ -71,7 +71,7 @@ class Player:
         conn.close()
 
     def choose_shield(self):
-        conn = sql.connect(DATABASE_DIR+"shields.db")
+        conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
         cursor.execute(SELECTION_STR+"shields")
@@ -81,20 +81,20 @@ class Player:
         self.shield=random_row[0]
         conn.close()
 
-    def choose_spells(self):
-        if(self.build_type == "S"):
-            conn = sql.connect(DATABASE_DIR+"shields.db")
-            cursor = conn.cursor()
+    # def choose_spells(self):
+    #     if(self.build_type == "S"):
+    #         conn = sql.connect(DATABASE_DIR+"shields.db")
+    #         cursor = conn.cursor()
 
-            cursor.execute(SELECTION_STR+"shields")
-            rows = cursor.fetchall()
+    #         cursor.execute(SELECTION_STR+"shields")
+    #         rows = cursor.fetchall()
 
-            random_row = random.choice(rows)
-            self.spells=random_row[0]
-            conn.close()
+    #         random_row = random.choice(rows)
+    #         self.spells=random_row[0]
+    #         conn.close()
         
     def choose_weapons(self):
-        conn = sql.connect(DATABASE_DIR+"weapons.db")
+        conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
         cursor.execute(SELECTION_STR+"weapons")
@@ -105,5 +105,6 @@ class Player:
         conn.close()
 
     def choose_all(self):
+        self.choose_class()
         self.choose_armor()
         self.choose_weapons()

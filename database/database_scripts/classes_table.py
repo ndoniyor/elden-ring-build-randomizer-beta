@@ -2,7 +2,7 @@ import sqlite3 as sql
 import pandas as pd
 from os import remove, path
 
-db_path = '../db/classes.db'
+db_path = '../db/items.db'
 
 if(path.exists(db_path)):
     remove(db_path)
