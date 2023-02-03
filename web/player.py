@@ -18,6 +18,7 @@ class Player:
         self.shield = ""
         self.spells = ""
         self.weapons = ""
+        self.spirit_ash = ""
 
     def choose_class(self):
         conn = sql.connect(DATABASE_DIR)
@@ -80,6 +81,18 @@ class Player:
         random_row = random.choice(rows)
         self.shield=random_row[0]
         conn.close()
+    
+    def choose_spirit_ash(self):
+        conn = sql.connect(DATABASE_DIR)
+        cursor = conn.cursor()
+
+        cursor.execute(SELECTION_STR+"spirits")
+        rows = cursor.fetchall()
+
+        random_row = random.choice(rows)
+        self.spirit_ash=random_row[0]
+        conn.close()
+    
 
     # def choose_spells(self):
     #     if(self.build_type == "S"):
@@ -108,3 +121,6 @@ class Player:
         self.choose_class()
         self.choose_armor()
         self.choose_weapons()
+        self.choose_ash_of_war()
+        self.choose_shield()
+        self.choose_spirit_ash()
