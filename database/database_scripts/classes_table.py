@@ -4,10 +4,7 @@ from os import remove, path
 
 db_path = '../db/items.db'
 
-if(path.exists(db_path)):
-    remove(db_path)
-
-classes_connection = sql.connect('../db/classes.db')
+classes_connection = sql.connect(db_path)
 classes_c = classes_connection.cursor()
 classes_c.execute('''CREATE TABLE classes (name)''')
 

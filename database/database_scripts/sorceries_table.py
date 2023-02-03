@@ -4,10 +4,8 @@ from os import remove, path
 
 db_path = '../db/items.db'
 
-if(path.exists(db_path)):
-    remove(db_path)
 
-sorceries_connection = sql.connect('../db/sorceries.db')
+sorceries_connection = sql.connect(db_path)
 sorceries_c = sorceries_connection.cursor()
 sorceries_c.execute('''CREATE TABLE sorceries (name)''')
 

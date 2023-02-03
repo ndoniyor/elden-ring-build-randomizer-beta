@@ -4,11 +4,8 @@ from os import remove, path
 
 db_path = '../db/items.db'
 
-if(path.exists(db_path)):
-    remove(db_path)
-
 #id,name,image,description,attack,defence,scalesWith,requiredAttributes,category,weight
-weapons_connection = sql.connect('../db/weapons.db')
+weapons_connection = sql.connect(db_path)
 weapons_c = weapons_connection.cursor()
 weapons_c.execute('''CREATE TABLE weapons (name)''')
 

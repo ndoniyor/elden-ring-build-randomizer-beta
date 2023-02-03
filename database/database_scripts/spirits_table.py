@@ -4,11 +4,9 @@ from os import remove, path
 
 db_path = '../db/items.db'
 
-if(path.exists(db_path)):
-    remove(db_path)
 
 #id,name,image,description,fpCost,hpCost,effect
-spirits_connection = sql.connect('../db/spirits.db')
+spirits_connection = sql.connect(db_path)
 spirits_c = spirits_connection.cursor()
 spirits_c.execute('''CREATE TABLE spirits (name)''')
 

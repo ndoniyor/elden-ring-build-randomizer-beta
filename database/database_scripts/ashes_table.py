@@ -4,10 +4,7 @@ from os import remove, path
 
 db_path = '../db/items.db'
 
-if(path.exists(db_path)):
-    remove(db_path)
-
-ashes_connection = sql.connect('../db/ashes.db')
+ashes_connection = sql.connect(db_path)
 ashes_c = ashes_connection.cursor()
 ashes_c.execute('''CREATE TABLE ashes (name, description)''')
 
