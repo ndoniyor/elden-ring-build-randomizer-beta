@@ -21,4 +21,7 @@ def home_page():
 def display():
     p1 = player.Player()
     p1.choose_all()
-    return render_template('index.html', starting_class=p1.starting_class, helm=p1.helmet, chest=p1.chest_armor, gauntlets=p1.gauntlets, legs=p1.leg_armor, weapon=p1.weapons)
+    return render_template('index.html', 
+    starting_class=p1.starting_class, 
+    helm=p1.helmet, chest=p1.chest_armor, gauntlets=p1.gauntlets, legs=p1.leg_armor, weapon=p1.weapons,
+    ash_of_war=p1.ash_of_war, shield=p1.shield, spirit_ash=p1.spirit_ash)
