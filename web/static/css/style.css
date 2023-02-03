@@ -4,6 +4,12 @@ table.build{
 
 table.build td{
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+table.build th{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 table.build td:last-child{
