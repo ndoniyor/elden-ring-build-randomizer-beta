@@ -10,7 +10,6 @@ weapons_c = weapons_connection.cursor()
 weapons_c.execute('''CREATE TABLE weapons (name)''')
 
 weapons_csv = pd.read_csv('../csv/weapons.csv')
-weapons_csv = weapons_csv.drop(["image"],axis=1)
 
 weapons_csv.to_sql('weapons',weapons_connection, if_exists='replace', index=False)
 

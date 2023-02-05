@@ -9,6 +9,5 @@ armor_c = armor_connection.cursor()
 armor_c.execute('''CREATE TABLE armors (name, category)''')
 
 armor_csv = pd.read_csv('../csv/armors.csv')
-armor_csv = armor_csv.drop(["image"],axis=1)
 
 armor_csv.to_sql('armors',armor_connection, if_exists='replace', index=False)

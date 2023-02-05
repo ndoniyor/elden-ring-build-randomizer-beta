@@ -10,7 +10,6 @@ shields_c = shields_connection.cursor()
 shields_c.execute('''CREATE TABLE shields (name)''')
 
 shields_csv = pd.read_csv('../csv/shields.csv')
-shields_csv = shields_csv.drop(["image"],axis=1)
 
 shields_csv.to_sql('shields',shields_connection, if_exists='replace', index=False)
 
