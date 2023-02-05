@@ -6,3 +6,6 @@ Elden Ring Build Randomizer built in Flask
 - [ ] Add column to weapon csv indicating type (user can specify what kind of weapons)
 - [ ] Add full randomizer (no bias) and refined randomizer
 - [x] Merge databases
+- [ ] Create item class so link can be stored without list
+- [ ] Update spells player class member to be a list of type 'item'
+- [ ] Split up table to be more narrow and easier to read
