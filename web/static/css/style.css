@@ -1,3 +1,16 @@
+table{
+    table-layout: fixed;
+}
+td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+td, th{
+    white-space: nowrap;
+}
+
 table.build{
     border: 1px solid black;
 }
@@ -18,4 +31,9 @@ table.build td:last-child{
 
 .btn{
     margin-bottom: 10px;
+}
+
+.imgs{
+    width: 200px;
+    height: 200px;
 }

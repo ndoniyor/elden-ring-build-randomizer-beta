@@ -8,17 +8,17 @@ SELECTION_STR = "SELECT * FROM "
 class Player:
     #starting_class, build_type, armor, ash_of_war, shield, spells
     def __init__(self):
-        self.starting_class = ""
-        self.build_type = ""
-        self.helmet = ""
-        self.chest_armor = ""
-        self.gauntlets = ""
-        self.leg_armor = ""
-        self.ash_of_war = ""
-        self.shield = ""
-        self.spells = ""
-        self.weapons = ""
-        self.spirit_ash = ""
+        self.starting_class = []
+        self.build_type = []
+        self.helmet = []
+        self.chest_armor = []
+        self.gauntlets = []
+        self.leg_armor = []
+        self.ash_of_war = []
+        self.shield = []
+        self.spells = []
+        self.weapons = []
+        self.spirit_ash = []
 
     def choose_class(self):
         conn = sql.connect(DATABASE_DIR)
@@ -28,7 +28,8 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.starting_class=random_row[0]
+        self.starting_class.append(random_row[0])
+        self.starting_class.append(random_row[1])
         conn.close()
 
     def choose_armor(self):
@@ -39,25 +40,29 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.helmet=random_row[0]
+        self.helmet.append(random_row[0])
+        self.helmet.append(random_row[1])
 
         cursor.execute(SELECTION_STR+"armors WHERE category='Chest Armor'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.chest_armor=random_row[0]
+        self.chest_armor.append(random_row[0])
+        self.chest_armor.append(random_row[1])
 
         cursor.execute(SELECTION_STR+"armors WHERE category='Gauntlets'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.gauntlets=random_row[0]
+        self.gauntlets.append(random_row[0])
+        self.gauntlets.append(random_row[1])
 
         cursor.execute(SELECTION_STR+"armors WHERE category='Leg Armor'")
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.leg_armor=random_row[0]
+        self.leg_armor.append(random_row[0])
+        self.leg_armor.append(random_row[1])
         conn.close()
 
     def choose_ash_of_war(self):
@@ -68,7 +73,8 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.ash_of_war=random_row[0]
+        self.ash_of_war.append(random_row[0])
+        self.ash_of_war.append(random_row[1])
         conn.close()
 
     def choose_shield(self):
@@ -79,7 +85,8 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.shield=random_row[0]
+        self.shield.append(random_row[0])
+        self.shield.append(random_row[1])
         conn.close()
     
     def choose_spirit_ash(self):
@@ -90,7 +97,8 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.spirit_ash=random_row[0]
+        self.spirit_ash.append(random_row[0])
+        self.spirit_ash.append(random_row[1])
         conn.close()
     
 
@@ -103,7 +111,7 @@ class Player:
     #         rows = cursor.fetchall()
 
     #         random_row = random.choice(rows)
-    #         self.spells=random_row[0]
+    #         self.spells.append(random_row[0])
     #         conn.close()
         
     def choose_weapons(self):
@@ -114,7 +122,8 @@ class Player:
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
-        self.weapons=random_row[0]
+        self.weapons.append(random_row[0])
+        self.weapons.append(random_row[1])
         conn.close()
 
     def choose_all(self):
