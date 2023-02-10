@@ -11,56 +11,79 @@
     <h1>Elden Ring Build Randomizer</h1>
     <div class="btn">
         <form method="POST", action="\randomize">
-            <input type="submit" value="Randomize">
+            <input type="submit" value="Randomize"><br>
+            <input type="checkbox" id="armor_set_check">
+            <label for="armor_set_check">Armor sets only</label>
         </form>
     </div>
-    <table class="build">
-        <tr>
-            <th>Class</th>
-            <th>Helmet</th>
-            <th>Chest</th>
-            <th>Gauntlets</th>
-            <th>Leg Armor</th>
-            <th>Weapon</th>
-            <th>Ash of War</th>
-            <th>Shield</th>
-            <!--<th>Spells</th><!-->
-            <th>Spirit Ash</th>
-        </tr>
-        <tr>
-            <td>{{ starting_class }}</td>
-            <td>{{ helm }}</td>
-            <td>{{ chest }}</td>
-            <td>{{ gauntlets }}</td>
-            <td>{{ legs }}</td>
-            <td>{{ weapon }}</td>
-            <td>{{ ash_of_war }}</td>
-            <td>{{ shield }}</td>
-            <td>{{ spirit_ash }}</td>
-        </tr>
-        <tr>
-            <td> <img src="{{ class_link }}" class="imgs"></td>
-            <td> <img src="{{ helm_link }}" class="imgs"></td>
-            <td> <img src="{{ chest_link }}" class="imgs"></td>
-            <td> <img src="{{ gauntlets_link }}" class="imgs"></td>
-            <td> <img src="{{ legs_link }}" class="imgs"></td>
-            <td> <img src="{{ weapon_link }}" class="imgs"></td>
-            <td> <img src="{{ ash_of_war_link }}" class="imgs"></td>
-            <td> <img src="{{ shield_link }}" class="imgs"></td>
-            <td> <img src="{{ spirit_ash_link }}" class="imgs"></td>
-        </tr>
-    </table>
-    <table class="spells">
-        <tr>
-            <th>Spells</th>
-        </tr>
-        <tr>
-            <td>{{ spell1 }}</td>
-            <td>{{ spell2 }}</td>
-            <td>{{ spell3 }}</td>
-            <td>{{ spell4 }}</td>
-            <td>{{ spell5 }}</td>
-        </tr>
-    </table>
+    {% if starting_class is defined %}
+        <div class="tables">
+            <table class="build">
+                <tr>
+                    <th>Class</th>
+                    <th>Spirit Ash</th>
+                </tr>
+                <tr>
+                    <td>{{ starting_class }}</td>
+                    <td>{{ spirit_ash }}</td>
+                </tr>
+                <tr>
+                    <td> <img src="{{ class_link }}" class="imgs"></td>
+                    <td> <img src="{{ spirit_ash_link }}" class="imgs"></td>
+                </tr>
+            </table>
+            <hr>
+            <table class="armor">
+                <tr>
+                    <th>Helmet</th>
+                    <th>Chest</th>
+                    <th>Gauntlets</th>
+                    <th>Leg Armor</th>
+                </tr>
+                <tr>
+                    <td>{{ helm }}</td>
+                    <td>{{ chest }}</td>
+                    <td>{{ gauntlets }}</td>
+                    <td>{{ legs }}</td>
+                </tr>
+                <tr>
+                    <td> <img src="{{ helm_link }}" class="imgs"></td>
+                    <td> <img src="{{ chest_link }}" class="imgs"></td>
+                    <td> <img src="{{ gauntlets_link }}" class="imgs"></td>
+                    <td> <img src="{{ legs_link }}" class="imgs"></td>
+                </tr>
+            </table>
+            <hr>
+            <table class="weapons">
+                <tr>
+                    <th>Weapon</th>
+                    <th>Ash of War</th>
+                    <th>Shield</th>
+                </tr>
+                <tr>
+                    <td>{{ weapon }}</td>
+                    <td>{{ ash_of_war }}</td>
+                    <td>{{ shield }}</td>
+                </tr>
+                <tr>
+                    <td> <img src="{{ weapon_link }}" class="imgs"></td>
+                    <td> <img src="{{ ash_of_war_link }}" class="imgs"></td>
+                    <td> <img src="{{ shield_link }}" class="imgs"></td>
+                </tr>
+            </table>
+            <table class="spells">
+                <tr>
+                    <th>Spells</th>
+                </tr>
+                <tr>
+                    <td>{{ spell1 }}</td>
+                    <td>{{ spell2 }}</td>
+                    <td>{{ spell3 }}</td>
+                    <td>{{ spell4 }}</td>
+                    <td>{{ spell5 }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
 </body>
 </html>
