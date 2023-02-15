@@ -8,4 +8,4 @@ Elden Ring Build Randomizer built in Flask
 - [ ] If weapon is a bow - find bow Ash of War
 - [ ] Create item class so link can be stored without list
 - [ ] Update spells player class member to be a list of type 'item'
-- [ ] Split up table to be more narrow and easier to read
+- [x] Split up table to be more narrow and easier to read
