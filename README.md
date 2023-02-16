@@ -9,3 +9,4 @@ Elden Ring Build Randomizer built in Flask
 - [ ] Create item class so link can be stored without list
 - [ ] Update spells player class member to be a list of type 'item'
 - [x] Split up table to be more narrow and easier to read
+- [ ] Delete talismans and staffs, I figure people will just go with whatever suits the spells that were chosen
