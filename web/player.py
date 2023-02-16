@@ -1,5 +1,6 @@
 import random
 import sqlite3 as sql
+import sys
 
 DATABASE_DIR = "database/db/items.db"
 SELECTION_STR = "SELECT * FROM "
@@ -115,16 +116,18 @@ class Player:
         conn.close()
 
     def choose_spells(self):
+        conn = sql.connect(DATABASE_DIR)
+        cursor = conn.cursor()
         if self.build_type == "S":
-            conn = sql.connect(DATABASE_DIR)
-            cursor = conn.cursor()
-
             cursor.execute("SELECT * FROM sorceries ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
+        elif self.build_type == "I":
+            cursor.execute("SELECT * FROM incantations ORDER BY RANDOM() LIMIT 5")
+            rows = cursor.fetchall()
+        for spell in rows:
+            self.spells.append(Item(spell[0],spell[1]))
+        conn.close()
 
-            for spell in rows:
-                self.spells.append(Item(spell[0]),spell[1])
-            conn.close()
 
     def choose_weapons(self):
         conn = sql.connect(DATABASE_DIR)
@@ -145,3 +148,4 @@ class Player:
         self.choose_ash_of_war()
         self.choose_shield()
         self.choose_spirit_ash()
+        self.choose_spells()

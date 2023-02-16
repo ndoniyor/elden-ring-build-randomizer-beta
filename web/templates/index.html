@@ -71,15 +71,20 @@
                     <td> <img src="{{ shield_link }}" class="imgs"></td>
                 </tr>
             </table>
+            <hr>
             <table class="spells">
                 <tr>
                     <th>Spells</th>
                 </tr>
                 <tr>
-                    <td>{{ spells[0].name }}</td>
+                    {% for spell in spells %}
+                        <td>{{ spell.name }}</td>
+                    {% endfor %}
                 </tr>
                 <tr>
-                    <td> <img src="{{ spells[0].link }}" class="imgs"></td>
+                    {% for spell in spells %}
+                        <td> <img src="{{ spell.link }}" class="imgs"></td>
+                    {% endfor %}
                 </tr>
             </table>
         </div>

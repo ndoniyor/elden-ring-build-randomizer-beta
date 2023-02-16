@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, url_for
 from . import player
+import sys
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_mapping(SECRET_KEY="dev", DATABASE="../database/db/items.db")
@@ -19,7 +20,10 @@ def home_page():
 @app.route("/randomize", methods=["POST"])
 def display():
     p1 = player.Player()
+    p1.build_type = "I"
     p1.choose_all()
+    print(type(p1.spells), p1.spells[0], p1.spells[0].name, file=sys.stdout)
+
     return render_template(
         "index.html",
         starting_class=p1.starting_class.name,
@@ -40,5 +44,5 @@ def display():
         ash_of_war_link=p1.ash_of_war.link,
         shield_link=p1.shield.link,
         spirit_ash_link=p1.spirit_ash.link,
-        spells=p1.spells
+        spells=p1.spells,
     )
