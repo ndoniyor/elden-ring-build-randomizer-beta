@@ -19,3 +19,13 @@ td, th{
     width: 200px;
     height: 200px;
 }
+
+body{
+    color: #dad2b0;
+    background-color: #1a2325;
+}
+
+#header-title{
+    font-family: Mantinia;
+    src: url('./Mantinia\ Regular.otf') format('otf');
+}
