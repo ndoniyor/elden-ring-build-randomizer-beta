@@ -40,4 +40,5 @@ def display():
         ash_of_war_link=p1.ash_of_war.link,
         shield_link=p1.shield.link,
         spirit_ash_link=p1.spirit_ash.link,
+        spells=p1.spells
     )

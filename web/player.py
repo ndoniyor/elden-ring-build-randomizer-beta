@@ -8,9 +8,9 @@ SELECTION_STR = "SELECT * FROM "
 # Melee/Int/Sorc
 
 class Item:
-    def __init__(self):
-        self.name = ""
-        self.link = ""
+    def __init__(self, name="", link=""):
+        self.name = name
+        self.link = link
 
     def setName(self, name):
         self.name = name
@@ -20,7 +20,7 @@ class Item:
 
 
 class Player:
-    def __init__(self):
+    def __init__(self, ):
         self.starting_class = Item()
         self.build_type = ""
         self.helmet = Item()
@@ -29,7 +29,7 @@ class Player:
         self.leg_armor = Item()
         self.ash_of_war = Item()
         self.shield = Item()
-        self.spells = Item()
+        self.spells = []
         self.weapons = Item()
         self.spirit_ash = Item()
 
@@ -116,14 +116,14 @@ class Player:
 
     def choose_spells(self):
         if self.build_type == "S":
-            conn = sql.connect(DATABASE_DIR + "shields.db")
+            conn = sql.connect(DATABASE_DIR)
             cursor = conn.cursor()
 
-            cursor.execute(SELECTION_STR + "shields")
+            cursor.execute("SELECT * FROM sorceries ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
 
-            random_row = random.choice(rows)
-            self.spells.setName(random_row[0])
+            for spell in rows:
+                self.spells.append(Item(spell[0]),spell[1])
             conn.close()
 
     def choose_weapons(self):
