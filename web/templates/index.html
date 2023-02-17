@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="page" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,8 @@
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="page">
-    <h1 id="header-title">Elden Ring Build Randomizer</h1>
+<body>
+    <h1 id="header-title">Placeholder</h1>
     <div class="btn">
         <form method="POST", action="\randomize">
             <input type="submit" value="Randomize"><br>
@@ -27,7 +27,7 @@
                     <td>{{ starting_class }}</td>
                     <td>{{ spirit_ash }}</td>
                 </tr>
-                <tr>
+                <tr class="imgbox">
                     <td> <img src="{{ class_link }}" class="imgs"></td>
                     <td> <img src="{{ spirit_ash_link }}" class="imgs"></td>
                 </tr>
