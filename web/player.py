@@ -23,7 +23,7 @@ class Item:
 class Player:
     def __init__(self, ):
         self.starting_class = Item()
-        self.build_type = ""
+        self.build_flags = []
         self.helmet = Item()
         self.chest_armor = Item()
         self.gauntlets = Item()
@@ -50,33 +50,41 @@ class Player:
         conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
-        cursor.execute(SELECTION_STR + "armors WHERE category='Helm'")
-        rows = cursor.fetchall()
+        if "armor_sets" in self.build_flags:
+            cursor.execute(SELECTION_STR + "armor_sets")
+            rows = cursor.fetchall()
+            random_row = random.choice(rows)
 
-        random_row = random.choice(rows)
-        self.helmet.setName(random_row[0])
-        self.helmet.setLink(random_row[1])
+            self.helmet.setName(random_row[0])
+            self.helmet.setLink(random_row[1])
+        else:
+            cursor.execute(SELECTION_STR + "armors WHERE category='Helm'")
+            rows = cursor.fetchall()
 
-        cursor.execute(SELECTION_STR + "armors WHERE category='Chest Armor'")
-        rows = cursor.fetchall()
+            random_row = random.choice(rows)
+            self.helmet.setName(random_row[0])
+            self.helmet.setLink(random_row[1])
 
-        random_row = random.choice(rows)
-        self.chest_armor.setName(random_row[0])
-        self.chest_armor.setLink(random_row[1])
+            cursor.execute(SELECTION_STR + "armors WHERE category='Chest Armor'")
+            rows = cursor.fetchall()
 
-        cursor.execute(SELECTION_STR + "armors WHERE category='Gauntlets'")
-        rows = cursor.fetchall()
+            random_row = random.choice(rows)
+            self.chest_armor.setName(random_row[0])
+            self.chest_armor.setLink(random_row[1])
 
-        random_row = random.choice(rows)
-        self.gauntlets.setName(random_row[0])
-        self.gauntlets.setLink(random_row[1])
+            cursor.execute(SELECTION_STR + "armors WHERE category='Gauntlets'")
+            rows = cursor.fetchall()
 
-        cursor.execute(SELECTION_STR + "armors WHERE category='Leg Armor'")
-        rows = cursor.fetchall()
+            random_row = random.choice(rows)
+            self.gauntlets.setName(random_row[0])
+            self.gauntlets.setLink(random_row[1])
 
-        random_row = random.choice(rows)
-        self.leg_armor.setName(random_row[0])
-        self.leg_armor.setLink(random_row[1])
+            cursor.execute(SELECTION_STR + "armors WHERE category='Leg Armor'")
+            rows = cursor.fetchall()
+
+            random_row = random.choice(rows)
+            self.leg_armor.setName(random_row[0])
+            self.leg_armor.setLink(random_row[1])
         conn.close()
 
     def choose_ash_of_war(self):

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
@@ -24,6 +24,8 @@ def home_page():
 def display():
     p1 = player.Player()
     p1.build_type = "I"
+    if 'armor_sets' in request.form:
+        p1.build_flags.append("armor_sets")
     p1.choose_all()
     print(type(p1.spells), p1.spells[0], p1.spells[0].name, file=sys.stdout)
 

@@ -11,9 +11,10 @@
     <h1 id="header-title">Placeholder</h1>
     <div class="btn">
         <form method="POST", action="\randomize">
-            <input type="submit" value="Randomize"><br>
-            <input type="checkbox" id="armor_set_check">
-            <label for="armor_set_check">Armor sets only</label>
+            <input type="checkbox" name="armor_sets" id="build_flags">
+            <label for="armor_set_check">Armor sets only</label><br>
+
+            <input type="submit" value="Randomize">
         </form>
     </div>
     {% if starting_class is defined %}
