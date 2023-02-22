@@ -9,83 +9,69 @@
 </head>
 <body>
     <h1 id="header-title">Placeholder</h1>
-    <div class="btn">
+    <div class="forms">
         <form method="POST", action="\randomize">
-            <input type="checkbox" name="armor_sets" id="build_flags">
-            <label for="armor_set_check">Armor sets only</label><br>
-
-            <input type="submit" value="Randomize">
+            <div class="flag-container">
+                <input type="checkbox" name="armor_sets" id="build_flags" {% if checked %} checked {% endif %}>
+                <label for="armor_set_check">Armor sets only</label>
+            </div>
+            <br>
+            <input type="submit" value="Randomize" id="submit-btn">
         </form>
     </div>
-    {% if starting_class is defined %}
-        <div class="tables">
-            <table class="build">
-                <tr>
-                    <th>Class</th>
-                    <th>Spirit Ash</th>
-                </tr>
-                <tr>
-                    <td>{{ starting_class }}</td>
-                    <td>{{ spirit_ash }}</td>
-                </tr>
-                <tr class="imgbox">
-                    <td> <img src="{{ class_link }}" class="imgs"></td>
-                    <td> <img src="{{ spirit_ash_link }}" class="imgs"></td>
-                </tr>
-            </table>
-            
-            <table class="armor">
-                <tr>
-                    <th>Helmet</th>
-                    <th>Chest</th>
-                    <th>Gauntlets</th>
-                    <th>Leg Armor</th>
-                </tr>
-                <tr>
-                    <td>{{ helm }}</td>
-                    <td>{{ chest }}</td>
-                    <td>{{ gauntlets }}</td>
-                    <td>{{ legs }}</td>
-                </tr>
-                <tr>
-                    <td> <img src="{{ helm_link }}" class="imgs"></td>
-                    <td> <img src="{{ chest_link }}" class="imgs"></td>
-                    <td> <img src="{{ gauntlets_link }}" class="imgs"></td>
-                    <td> <img src="{{ legs_link }}" class="imgs"></td>
-                </tr>
-            </table>
-            
-            <table class="weapons">
-                <tr>
-                    <th>Weapon</th>
-                    <th>Ash of War</th>
-                    <th>Shield</th>
-                </tr>
-                <tr>
-                    <td>{{ weapon }}</td>
-                    <td>{{ ash_of_war }}</td>
-                    <td>{{ shield }}</td>
-                </tr>
-                <tr>
-                    <td> <img src="{{ weapon_link }}" class="imgs"></td>
-                    <td> <img src="{{ ash_of_war_link }}" class="imgs"></td>
-                    <td> <img src="{{ shield_link }}" class="imgs"></td>
-                </tr>
-            </table>
-            
-            <table class="spells">
-                <th>Spells</th>
-                <tr>
-                    {% for spell in spells %}
-                        <td>{{ spell.name }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for spell in spells %}
-                        <td> <img src="{{ spell.link }}" class="imgs"></td>
-                    {% endfor %}
-                </tr>
-            </table>
+    {% if player_info is defined %}
+        <div class="build-grid">
+            <div class="grid-row">
+                <div class="grid-item">
+                    <div class="item-type">
+                        Class
+                    </div>
+                    <div class="item-name">
+                        {{ player_info.starting_class.name }}
+                    </div>
+                    <div class="item-image">
+                        <img src="{{ player_info.starting_class.link }}" class="imgs">
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="item-type">
+                        Spirit Ashes
+                    </div>
+                    <div class="item-name">
+                        {{ player_info.spirit_ash.name }}
+                    </div>
+                    <div class="item-image">
+                        <img src="{{ player_info.spirit_ash.link }}" class="imgs">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-row">
+                {% if "armor_sets" in player_info.build_flags %}
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Armor Set
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.helmet.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.helmet.link }}" class="imgs">
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Helmet
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.helmet.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.helmet.link }}" class="imgs">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 </body>

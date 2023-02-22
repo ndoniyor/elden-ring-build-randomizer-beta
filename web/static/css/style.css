@@ -1,22 +1,29 @@
-table{
-    table-layout: fixed;
-    margin: auto;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 30px;
+.build-grid{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
 }
 
-td{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+.grid-item{
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-color: white;
 }
 
-td, th{
-    white-space: nowrap;
+.item-name, .item-type{
     text-align: center;
 }
 
-.btn{
+.grid-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.forms{
     display: flex;
     margin-bottom: 10px;
     justify-content: center;
@@ -24,10 +31,10 @@ td, th{
 }
 
 .imgs{
-    width: 20vw;
+    max-width: 100%;
     height: auto;
-    max-width: 200px;
     max-height: 200px;
+    align-items: center;
 }
 
 .page{
