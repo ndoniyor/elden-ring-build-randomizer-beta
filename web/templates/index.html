@@ -70,7 +70,64 @@
                             <img src="{{ player_info.helmet.link }}" class="imgs">
                         </div>
                     </div>
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Chest Armor
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.chest_armor.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.chest_armor.link }}" class="imgs">
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Gauntlets
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.gauntlets.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.gauntlets.link }}" class="imgs">
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Leg Armor
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.leg_armor.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.leg_armor.link }}" class="imgs">
+                        </div>
+                    </div>
                 {% endif %}
+            </div>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <div class="item-type">
+                        Weapon
+                    </div>
+                    <div class="item-name">
+                        {{ player_info.weapons.name }}
+                    </div>
+                    <div class="item-image">
+                        <img src="{{ player_info.weapons.link }}" class="imgs">
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="item-type">
+                        Ash of War
+                    </div>
+                    <div class="item-name">
+                        {{ player_info.ash_of_war.name }}
+                    </div>
+                    <div class="item-image">
+                        <img src="{{ player_info.ash_of_war.link }}" class="imgs">
+                    </div>
+                </div>
             </div>
         </div>
     {% endif %}
