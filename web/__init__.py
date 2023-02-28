@@ -23,12 +23,8 @@ def display():
     print(request.form)
     if "armor_sets" in request.form:
         p1.build_flags.append("armor_sets")
-    if "melee" in request.form:
-        p1.build_flags.append("M")
-    if "sorc" in request.form :
-        p1.build_flags.append("S")
-    if "incant" in request.form:
-        p1.build_flags.append("I")
+    if "build_flags" in request.form:
+        p1.build_flags.append(request.form['build_flags'])
     else:
         p1.build_flags.append(choice(["S","M","I"]))
     p1.choose_all()
