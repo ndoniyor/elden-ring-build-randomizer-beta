@@ -126,10 +126,10 @@ class Player:
     def choose_spells(self):
         conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
-        if self.build_type == "S":
+        if "S" in self.build_flags:
             cursor.execute("SELECT * FROM sorceries ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
-        elif self.build_type == "I":
+        elif "I" in self.build_flags:
             cursor.execute("SELECT * FROM incantations ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
         for spell in rows:
@@ -156,4 +156,5 @@ class Player:
         self.choose_ash_of_war()
         self.choose_shield()
         self.choose_spirit_ash()
-        self.choose_spells()
+        if("S" in self.build_flags or "I" in self.build_flags):
+            self.choose_spells()

@@ -11,9 +11,17 @@
     <h1 id="header-title">Placeholder</h1>
     <div class="forms">
         <form method="POST", action="\randomize">
+            <input type="checkbox" name="armor_sets" id="armor_flags" {% if checked %} checked {% endif %}>
+            <label for="armor_sets">Armor sets only</label><br>
             <div class="flag-container">
-                <input type="checkbox" name="armor_sets" id="build_flags" {% if checked %} checked {% endif %}>
-                <label for="armor_set_check">Armor sets only</label>
+                <label for="melee_flag">Melee only</label>
+                <input type="radio" name="melee" id="melee_flag">
+                
+                <label for="sorc_flag">Sorceries</label>
+                <input type="radio" name="sorc" id="sorc_flag">
+                
+                <label for="encant_flag">Incantations</label>
+                <input type="radio" name="incant" id="encant_flag">
             </div>
             <br>
             <input type="submit" value="Randomize" id="submit-btn">
@@ -129,6 +137,23 @@
                     </div>
                 </div>
             </div>
+            {% if "S" in player_info.build_flags or "I" in player_info.build_flags %}
+            <div class="grid-row">
+                {% for spell in player_info.spells %}
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Spell
+                        </div>
+                        <div class="item-name">
+                            {{ spell.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ spell.link }}" class="imgs">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     {% endif %}
 </body>
