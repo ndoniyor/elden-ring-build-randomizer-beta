@@ -20,7 +20,6 @@ def home_page():
 @app.route("/randomize", methods=["POST"])
 def display():
     p1 = player.Player()
-    print(request.form)
     if "armor_sets" in request.form:
         p1.build_flags.append("armor_sets")
     if "build_flags" in request.form:

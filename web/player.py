@@ -31,7 +31,7 @@ class Player:
         self.ash_of_war = Item()
         self.shield = Item()
         self.spells = []
-        self.weapons = Item()
+        self.weapons = []
         self.spirit_ash = Item()
 
     def choose_class(self):
@@ -87,11 +87,12 @@ class Player:
             self.leg_armor.setLink(random_row[1])
         conn.close()
 
-    def choose_ash_of_war(self):
+    def choose_ash_of_war(self, weapon_type):
+        print(weapon_type)
         conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
-        cursor.execute(SELECTION_STR + "ashes")
+        cursor.execute(SELECTION_STR + 'ashes WHERE type LIKE "%' + weapon_type + '%"')
         rows = cursor.fetchall()
 
         random_row = random.choice(rows)
@@ -127,10 +128,10 @@ class Player:
         conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
         if "S" in self.build_flags:
-            cursor.execute("SELECT * FROM sorceries ORDER BY RANDOM() LIMIT 5")
+            cursor.execute(SELECTION_STR + "sorceries ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
         elif "I" in self.build_flags:
-            cursor.execute("SELECT * FROM incantations ORDER BY RANDOM() LIMIT 5")
+            cursor.execute(SELECTION_STR + "incantations ORDER BY RANDOM() LIMIT 5")
             rows = cursor.fetchall()
         for spell in rows:
             self.spells.append(Item(spell[0],spell[1]))
@@ -141,19 +142,48 @@ class Player:
         conn = sql.connect(DATABASE_DIR)
         cursor = conn.cursor()
 
-        cursor.execute(SELECTION_STR + "weapons")
-        rows = cursor.fetchall()
+        if "DH" in self.build_flags:
+            cursor.execute(SELECTION_STR + "weapons")
+            rows = cursor.fetchall()
 
-        random_row = random.choice(rows)
-        self.weapons.setName(random_row[0])
-        self.weapons.setLink(random_row[1])
+            random_row = random.choice(rows)
+            self.weapons[0].setName(random_row[0])
+            self.weapons[0].setLink(random_row[1])
+
+        elif "PS" in self.build_flags:
+            cursor.execute(SELECTION_STR + "weapons")
+            rows = cursor.fetchall()
+
+            random_row = random.choice(rows)
+            self.weapons.append(Item(random_row[0],random_row[1]))
+
+            cursor.execute(SELECTION_STR + 'weapons')
+            rows = cursor.fetchall()
+
+            random_row = random.choice(rows)
+            self.weapons.append(Item(random_row[0],random_row[1]))
+
+
+
         conn.close()
+        if(random_row[2] is not 'n'):
+            return(random_row[3])
+        else: 
+            return 0
 
     def choose_all(self):
+        #if("M" in self.build_flags):
+        #    self.build_flags.append(random.choice(["PS","SH","DH"]))
+        self.build_flags.append("PS")
         self.choose_class()
         self.choose_armor()
-        self.choose_weapons()
-        self.choose_ash_of_war()
+        weapon_type = self.choose_weapons()
+        print(self.weapons[0].name)
+        
+        #if(weapon_type != 0):
+        #    self.choose_ash_of_war(weapon_type)
+        #else:
+        #    self.ash_of_war.name =  "EMPTY"
         self.choose_shield()
         self.choose_spirit_ash()
         if("S" in self.build_flags or "I" in self.build_flags):

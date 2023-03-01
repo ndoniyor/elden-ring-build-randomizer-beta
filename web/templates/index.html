@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1 id="header-title">Placeholder</h1>
+    <h1 id="header-title">Elden Ring Build Randomizer</h1>
     <div class="forms">
         <form method="POST", action="\randomize">
             <label for="armor_flags">Armor sets only</label>
@@ -117,26 +117,41 @@
             <div class="grid-row">
                 <div class="grid-item">
                     <div class="item-type">
-                        Weapon
+                        Primary
                     </div>
                     <div class="item-name">
-                        {{ player_info.weapons.name }}
+                        {{ player_info.weapons[0].name }}
                     </div>
                     <div class="item-image">
-                        <img src="{{ player_info.weapons.link }}" class="imgs">
+                        <img src="{{ player_info.weapons[0].link }}" class="imgs">
                     </div>
                 </div>
-                <div class="grid-item">
-                    <div class="item-type">
-                        Ash of War
+                {% if player_info.weapons[1].name is defined %}
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Secondary
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.weapons[1].name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.weapons[1].link }}" class="imgs">
+                        </div>
                     </div>
-                    <div class="item-name">
-                        {{ player_info.ash_of_war.name }}
+                {% endif %}
+                    {% if player_info.ash_of_war.name != "EMPTY" %}
+                    <div class="grid-item">
+                        <div class="item-type">
+                            Ash of War
+                        </div>
+                        <div class="item-name">
+                            {{ player_info.ash_of_war.name }}
+                        </div>
+                        <div class="item-image">
+                            <img src="{{ player_info.ash_of_war.link }}" class="imgs">
+                        </div>
                     </div>
-                    <div class="item-image">
-                        <img src="{{ player_info.ash_of_war.link }}" class="imgs">
-                    </div>
-                </div>
+                {% endif %}
             </div>
             {% if "S" in player_info.build_flags or "I" in player_info.build_flags %}
             <div class="grid-row">
