@@ -16,7 +16,7 @@
 }
 .grid-item{
     display: inline-block;
-    max-width: 25vw;
+    width: 20vw;
 }
 
 .grid-item + .grid-item{
@@ -35,7 +35,9 @@
 }
 
 .item-image{
-    padding: 5%;
+    display: flex;
+    justify-content: center;
+    padding: 10%;
 }
 .item-type{
     display: inline-block;
@@ -63,7 +65,7 @@
 .imgs{
     max-width: 100%;
     height: auto;
-    max-height: 200px;
+    max-height: 20vh;
 }
 
 .page{
