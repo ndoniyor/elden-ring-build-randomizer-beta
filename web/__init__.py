@@ -39,5 +39,6 @@ def display():
     return render_template(
         "index.html",
         player_info=p1,
-        checked=True if "armor_sets" in request.form else False,
+        checked_armor=True if "armor_sets" in request.form else False,
+        checked_pure=True if "pure_random" in request.form else False,
     )

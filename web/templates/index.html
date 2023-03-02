@@ -6,26 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="/static/jquery-3.6.3.min.js"></script>
+    <script>
+        $('#pure_flag').prop("checked", false);
+        $(document).ready(function() {
+            if($('#pure_flag').is(':checked')){
+                $('.flag-container').hide();
+                $('.build-flag-title').hide();
+            }
+            $('#pure_flag').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('.flag-container').hide();
+                    $('.build-flag-title').hide();
+                } else {
+                    $('.flag-container').show();
+                    $('.build-flag-title').show();
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <h1 id="header-title">Elden Ring Build Randomizer</h1>
     <div class="forms">
         <form method="POST", action="\randomize">
-            <label for="armor_flags">Armor sets only</label>
-            <input type="checkbox" name="armor_sets" id="armor_flags" {% if checked %} checked {% endif %}>
-            <br>
-            <div class="flag-container">
-                <label for="melee_flag">Melee only</label>
-                <input type="radio" name="build_flags" id="melee_flag" value="M">
-                
-                <label for="sorc_flag">Sorceries</label>
-                <input type="radio" name="build_flags" id="sorc_flag" value="S">
-                
-                <label for="encant_flag">Incantations</label>
-                <input type="radio" name="build_flags" id="encant_flag" value="I">
+            <div class="form-container">
+                <div class="pure-randomize-container">
+                    <label for="pure_flag">Pure randomize</label>
+                    <input class="check" type="checkbox" name="pure_random" id="pure_flag" value="true" {% if checked_pure %} checked {% endif %}>
+                </div>
+                <h4 class="build-flag-title">Build flags: </h4>
+                <div class="flag-container">
+                    <div class="armor-flag-container">
+                        <label for="armor_flags">Armor sets only</label>
+                        <input class="check" type="checkbox" name="armor_sets" id="armor_flags" {% if checked_armor %} checked {% endif %}>
+                    </div>
+                    <div class="build-flag-container">
+                        <label for="melee_flag">Melee only</label>
+                        <input class="radio" type="radio" name="build_flags" id="melee_flag" value=0>
+                        
+                        <label for="sorc_flag">Sorceries</label>
+                        <input class="radio" type="radio" name="build_flags" id="sorc_flag" value=1>
+                        
+                        <label for="encant_flag">Incantations</label>
+                        <input class="radio" type="radio" name="build_flags" id="encant_flag" value=2>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <input type="submit" value="Randomize" id="submit-btn">
+                </div>
             </div>
-            <br>
-            <input type="submit" value="Randomize" id="submit-btn">
         </form>
     </div>
     {% if player_info is defined %}
