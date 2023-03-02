@@ -135,3 +135,5 @@ database_setup/csv
 .vscode/
 
 temp/
+
+web/static/jquery-3.6.3.min.js
