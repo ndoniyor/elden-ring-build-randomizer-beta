@@ -115,42 +115,33 @@
                 {% endif %}
             </div>
             <div class="grid-row">
-                <div class="grid-item">
-                    <div class="item-type">
-                        Primary
-                    </div>
-                    <div class="item-name">
-                        {{ player_info.weapons[0].name }}
-                    </div>
-                    <div class="item-image">
-                        <img src="{{ player_info.weapons[0].link }}" class="imgs">
-                    </div>
-                </div>
-                {% if player_info.weapons[1].name is defined %}
+                {% for weapon in player_info.weapons %}
                     <div class="grid-item">
                         <div class="item-type">
-                            Secondary
+                            Weapon
                         </div>
                         <div class="item-name">
-                            {{ player_info.weapons[1].name }}
+                            {{ weapon.name }}
                         </div>
                         <div class="item-image">
-                            <img src="{{ player_info.weapons[1].link }}" class="imgs">
+                            <img src="{{ weapon.link }}" class="imgs">
                         </div>
                     </div>
-                {% endif %}
-                    {% if player_info.ash_of_war.name != "EMPTY" %}
-                    <div class="grid-item">
-                        <div class="item-type">
-                            Ash of War
-                        </div>
-                        <div class="item-name">
-                            {{ player_info.ash_of_war.name }}
-                        </div>
-                        <div class="item-image">
-                            <img src="{{ player_info.ash_of_war.link }}" class="imgs">
-                        </div>
-                    </div>
+                {% endfor %}
+                    {% if player_info.ash_of_war.name != "" %}
+                        {% for ash in player_info.ash_of_war %}
+                            <div class="grid-item">
+                                <div class="item-type">
+                                    Ash of War
+                                </div>
+                                <div class="item-name">
+                                    {{ ash.name }}
+                                </div>
+                                <div class="item-image">
+                                    <img src="{{ ash.link }}" class="imgs">
+                                </div>
+                            </div>
+                        {% endfor %}
                 {% endif %}
             </div>
             {% if "S" in player_info.build_flags or "I" in player_info.build_flags %}

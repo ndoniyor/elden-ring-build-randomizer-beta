@@ -5,6 +5,14 @@ from . import player
 from random import choice
 import sys
 
+MELEE = 0
+SORCERIES = 1
+INCANTATIONS = 2
+DUAL_WIELD = 3
+POWERSTANCE = 4
+SINGLE_WIELD = 5
+SHIELD = 6
+
 app = Flask(__name__, instance_relative_config=True)
 try:
     os.makedirs(app.instance_path)
@@ -25,7 +33,7 @@ def display():
     if "build_flags" in request.form:
         p1.build_flags.append(request.form['build_flags'])
     else:
-        p1.build_flags.append(choice(["S","M","I"]))
+        p1.build_flags.append(choice([SORCERIES,MELEE,INCANTATIONS]))
     p1.choose_all()
 
     return render_template(
