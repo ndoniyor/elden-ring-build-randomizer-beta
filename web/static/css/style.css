@@ -23,11 +23,22 @@
     border-left: solid 1px var(--gold);
 }
 
-
 .item-name, .item-type{
     text-align: center;
 }
+.radio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: scale(1.25);
+    width: 100%;
+}
 
+.build-flag-container{
+    width:100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
 .item-name{
     padding-top: 5%;
     padding-left: 5%;
@@ -50,16 +61,46 @@
 .grid-row {
   display: flex;
   justify-content: space-evenly;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.8);
   border-radius: 30px;
   border: 1px solid var(--gold);
   margin-bottom: 10px;
 }
 
+h4{
+    text-align: center;
+}
+
+.btn-container{
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+.options{
+    display: flex;
+    align-items: center;
+}
+
+.pure-randomize-container{
+    display:flex;
+    justify-content: center;
+}
+.flag-container{
+    display: flex;
+    justify-content: center;
+}
+
+.form-container{
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid var(--gold);
+    background-color: rgba(0,0,0,0.8);
+    width: 25vw;
+}
 .forms{
     display: flex;
-    margin-bottom: 10px;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .imgs{
