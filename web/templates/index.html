@@ -43,13 +43,13 @@
                     </div>
                     <div class="build-flag-container">
                         <label for="melee_flag">Melee only</label>
-                        <input class="radio" type="radio" name="build_flags" id="melee_flag" value=0>
+                        <input class="radio" type="radio" name="build_flags" id="melee_flag" value=0 {% if checked_melee %} checked {% endif %}>
                         
                         <label for="sorc_flag">Sorceries</label>
-                        <input class="radio" type="radio" name="build_flags" id="sorc_flag" value=1>
+                        <input class="radio" type="radio" name="build_flags" id="sorc_flag" value=1 {% if checked_sorc %} checked {% endif %}>
                         
                         <label for="encant_flag">Incantations</label>
-                        <input class="radio" type="radio" name="build_flags" id="encant_flag" value=2>
+                        <input class="radio" type="radio" name="build_flags" id="encant_flag" value=2 {% if checked_encant %} checked {% endif %}>
                     </div>
                 </div>
                 <div class="btn-container">
@@ -63,10 +63,10 @@
             <div class="grid-row">
                 <div class="grid-item">
                     <div class="item-type">
-                        Class
+                        <p>Class</p>
                     </div>
                     <div class="item-name">
-                        {{ player_info.starting_class.name }}
+                        <p>{{ player_info.starting_class.name }}</p>
                     </div>
                     <div class="item-image">
                         <img src="{{ player_info.starting_class.link }}" class="imgs">
@@ -74,10 +74,10 @@
                 </div>
                 <div class="grid-item">
                     <div class="item-type">
-                        Spirit Ashes
+                        <p>Spirit Ashes</p>
                     </div>
                     <div class="item-name">
-                        {{ player_info.spirit_ash.name }}
+                        <p>{{ player_info.spirit_ash.name }}</p>
                     </div>
                     <div class="item-image">
                         <img src="{{ player_info.spirit_ash.link }}" class="imgs">
@@ -88,10 +88,10 @@
                 {% if "armor_sets" in player_info.build_flags %}
                     <div class="grid-item">
                         <div class="item-type">
-                            Armor Set
+                            <p>Armor Set</p>
                         </div>
                         <div class="item-name">
-                            {{ player_info.helmet.name }}
+                            <p>{{ player_info.helmet.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ player_info.helmet.link }}" class="imgs">
@@ -100,10 +100,10 @@
                 {% else %}
                     <div class="grid-item">
                         <div class="item-type">
-                            Helmet
+                            <p>Helmet</p>
                         </div>
                         <div class="item-name">
-                            {{ player_info.helmet.name }}
+                            <p>{{ player_info.helmet.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ player_info.helmet.link }}" class="imgs">
@@ -111,10 +111,10 @@
                     </div>
                     <div class="grid-item">
                         <div class="item-type">
-                            Chest Armor
+                            <p>Chest Armor</p>
                         </div>
                         <div class="item-name">
-                            {{ player_info.chest_armor.name }}
+                            <p>{{ player_info.chest_armor.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ player_info.chest_armor.link }}" class="imgs">
@@ -122,10 +122,10 @@
                     </div>
                     <div class="grid-item">
                         <div class="item-type">
-                            Gauntlets
+                            <p>Gauntlets</p>
                         </div>
                         <div class="item-name">
-                            {{ player_info.gauntlets.name }}
+                            <p>{{ player_info.gauntlets.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ player_info.gauntlets.link }}" class="imgs">
@@ -133,10 +133,10 @@
                     </div>
                     <div class="grid-item">
                         <div class="item-type">
-                            Leg Armor
+                            <p>Leg Armor</p>
                         </div>
                         <div class="item-name">
-                            {{ player_info.leg_armor.name }}
+                            <p>{{ player_info.leg_armor.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ player_info.leg_armor.link }}" class="imgs">
@@ -148,10 +148,10 @@
                 {% for weapon in player_info.weapons %}
                     <div class="grid-item">
                         <div class="item-type">
-                            Weapon
+                            <p>Weapon</p>
                         </div>
                         <div class="item-name">
-                            {{ weapon.name }}
+                            <p>{{ weapon.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ weapon.link }}" class="imgs">
@@ -162,10 +162,10 @@
                         {% for ash in player_info.ash_of_war %}
                             <div class="grid-item">
                                 <div class="item-type">
-                                    Ash of War
+                                    <p>Ash of War</p>
                                 </div>
                                 <div class="item-name">
-                                    {{ ash.name }}
+                                    <p>{{ ash.name }}</p>
                                 </div>
                                 <div class="item-image">
                                     <img src="{{ ash.link }}" class="imgs">
@@ -174,15 +174,15 @@
                         {% endfor %}
                 {% endif %}
             </div>
-            {% if "S" in player_info.build_flags or "I" in player_info.build_flags %}
+            {% if 1 in player_info.build_flags or 2 in player_info.build_flags %}
             <div class="grid-row">
                 {% for spell in player_info.spells %}
                     <div class="grid-item">
                         <div class="item-type">
-                            Spell
+                            <p>Spell</p>
                         </div>
                         <div class="item-name">
-                            {{ spell.name }}
+                            <p>{{ spell.name }}</p>
                         </div>
                         <div class="item-image">
                             <img src="{{ spell.link }}" class="imgs">

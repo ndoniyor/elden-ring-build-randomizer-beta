@@ -28,12 +28,14 @@ def home_page():
 @app.route("/randomize", methods=["POST"])
 def display():
     p1 = player.Player()
+    print("form: ",request.form)
     if "armor_sets" in request.form:
         p1.build_flags.append("armor_sets")
     if "build_flags" in request.form:
-        p1.build_flags.append(request.form['build_flags'])
+        p1.build_flags.append(int(request.form['build_flags']))
     else:
         p1.build_flags.append(choice([SORCERIES,MELEE,INCANTATIONS]))
+    print(p1.build_flags)
     p1.choose_all()
 
     return render_template(
@@ -41,4 +43,5 @@ def display():
         player_info=p1,
         checked_armor=True if "armor_sets" in request.form else False,
         checked_pure=True if "pure_random" in request.form else False,
+        checked_melee=True if "build_flags" in request.form else False,
     )

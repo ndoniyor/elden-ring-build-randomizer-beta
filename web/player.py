@@ -102,7 +102,6 @@ class Player:
         for weapon_type in weapon_types:
             cursor.execute(SELECTION_STR + 'ashes WHERE type LIKE "%' + weapon_type + '%"')
             rows = cursor.fetchall()
-            print("type= ",weapon_type)
             random_row = random.choice(rows)
             self.ash_of_war.append(Item(random_row[0],random_row[1]))
         conn.close()
@@ -182,11 +181,12 @@ class Player:
         self.choose_class()
         self.choose_armor()
         weapon_types = self.choose_weapons()
-
         
         if(weapon_types):
             self.choose_ash_of_war(weapon_types)
-            print(*self.ash_of_war)
+
         self.choose_spirit_ash()
         if(SORCERIES in self.build_flags or INCANTATIONS in self.build_flags):
             self.choose_spells()
+        for spell in self.spells:
+            print(spell.name)
