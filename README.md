@@ -5,9 +5,9 @@ Dynamic web app built with Flask that generates randomized character builds for 
 Site is currently hosted at: http://eldenrandomizer.pythonanywhere.com
 
 ## To run locally:
-1. Clone the repository: 'git clone https://github.com/ndoniyor/elden-ring-build-randomizer.git && cd elden-ring-build-randomizer'
-2. Install dependencies: 'conda env create -f environment.yml'
-3. Run flask app: 'flask --app web --debug run'
+1. Clone the repository: `git clone https://github.com/ndoniyor/elden-ring-build-randomizer.git && cd elden-ring-build-randomizer`
+2. Install dependencies: `conda env create -f environment.yml`
+3. Run flask app: `flask --app web --debug run`
 4. Open a web browser and navigate to http://localhost:[PORT]
 
 # Suggestions
