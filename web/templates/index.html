@@ -24,6 +24,33 @@
                 }
             });
         });
+        $('#melee_flag').prop("checked", false);
+        $(document).ready(function() {
+            if (!$('#melee_flag').is(':checked')) {
+                $('.melee-flag-container').hide();
+            }
+            $('#melee_flag').on('change', function() {
+                if (!$(this).is(':checked')) {
+                    $('.melee-flag-container').hide();
+                } else {
+                    $('.melee-flag-container').show();
+                }
+            });
+            $('#sorc_flag').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('.melee-flag-container').hide();
+                } else {
+                    $('.melee-flag-container').show();
+                }
+            });
+            $('#encant_flag').on('change', function() {
+                if ($(this).is(':checked')) {
+                    $('.melee-flag-container').hide();
+                } else {
+                    $('.melee-flag-container').show();
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -44,7 +71,16 @@
                     <div class="build-flag-container">
                         <label for="melee_flag">Melee only</label>
                         <input class="radio" type="radio" name="build_flags" id="melee_flag" value=0 {% if checked_melee %} checked {% endif %}>
-                        
+                        <div class="melee-flag-container">
+                            <label for="single">Dual Wield</label>
+                            <input class="radio" type="radio" name="melee_sub_flag" id="dual" value=3>
+                            <label for="single">Powerstance</label>
+                            <input class="radio" type="radio" name="melee_sub_flag" id="dual" value=4>
+                            <label for="single">Single Wield</label>
+                            <input class="radio" type="radio" name="melee_sub_flag" id="dual" value=5>
+                            <label for="single">Shield</label>
+                            <input class="radio" type="radio" name="melee_sub_flag" id="dual" value=6>
+                        </div>
                         <label for="sorc_flag">Sorceries</label>
                         <input class="radio" type="radio" name="build_flags" id="sorc_flag" value=1 {% if checked_sorc %} checked {% endif %}>
                         

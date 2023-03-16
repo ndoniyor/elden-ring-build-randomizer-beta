@@ -31,11 +31,12 @@ def display():
     print("form: ",request.form)
     if "armor_sets" in request.form:
         p1.build_flags.append("armor_sets")
-    if "build_flags" in request.form:
+    if "melee_sub_flag" in request.form:
+        p1.build_flags.append(request.form["melee_sub_flag"])
+    if "build_flags" in request.form and "pure_random" not in request.form:
         p1.build_flags.append(int(request.form['build_flags']))
     else:
         p1.build_flags.append(choice([SORCERIES,MELEE,INCANTATIONS]))
-    print(p1.build_flags)
     p1.choose_all()
 
     return render_template(
